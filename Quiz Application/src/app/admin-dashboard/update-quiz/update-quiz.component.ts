@@ -18,12 +18,15 @@ export class UpdateQuizComponent implements OnInit {
 
   ngOnInit(): void {
     this.qId = this.route.snapshot.params.qid;
-    this.qservice.getSingleQuiz(this.qId).subscribe((response: any) => {
-      this.quiz = response;
-    },
-      (error) => {
-        console.log(error);
-      })
+    setTimeout(()=>{
+
+      this.qservice.getSingleQuiz(this.qId).subscribe((response: any) => {
+        this.quiz = response;
+      },
+        (error) => {
+          console.log(error);
+        })
+    })
   }
   updateQuiz() {
     this.qservice.updateQuiz(this.quiz).subscribe((response: any) => {

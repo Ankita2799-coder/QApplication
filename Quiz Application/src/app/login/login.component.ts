@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       })
       this.username.reset();
       this.password.reset();
-      this.qservice.isLogin.next(true);
+      // this.qservice.isLogin.next(true);
       this.qservice.saveToken(data.jwt);
       this.qservice.getCurrentUser(this.username.value).subscribe((data:any)=>{
        this.qservice.setUser(data); 

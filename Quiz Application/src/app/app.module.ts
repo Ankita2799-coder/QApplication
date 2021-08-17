@@ -39,7 +39,9 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { UpdateQuizComponent } from './admin-dashboard/update-quiz/update-quiz.component';
 import { QuestionsComponent } from './admin-dashboard/questions/questions.component';
 import { authInterceptorProviders } from './services/auth.interceptor';
-
+import { UserQuizesComponent } from './user-quizes/user-quizes.component';
+import Swal from 'sweetalert2'
+import {MatRadioModule} from '@angular/material/radio';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +61,8 @@ import { authInterceptorProviders } from './services/auth.interceptor';
     QuizComponent,
     HowItWorksComponent,
     UpdateQuizComponent,
-    QuestionsComponent,  ],
+    QuestionsComponent,
+    UserQuizesComponent,  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -82,7 +85,8 @@ import { authInterceptorProviders } from './services/auth.interceptor';
     MatSnackBarModule,
     MatListModule,
     MatSelectModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatRadioModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

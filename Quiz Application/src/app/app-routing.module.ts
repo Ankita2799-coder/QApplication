@@ -17,6 +17,7 @@ import { PlayerProfileComponent } from './player-profile/player-profile.componen
 import { PlayerComponent } from './player/player.component';
 import { AdminGuard } from './services/admin.guard';
 import { SignupComponent } from './signup/signup.component';
+import { UserQuizesComponent } from './user-quizes/user-quizes.component';
 
 
 const routes: Routes = [
@@ -30,13 +31,19 @@ const routes: Routes = [
     path: 'signup', component: SignupComponent
   },
   {
-    path: 'play-zone', component: PlayerComponent
+    path: 'play-zone/:qid', component: PlayerComponent
   },
   {
     path: 'user-profile', component: PlayerProfileComponent
   },
+  // {
+  //   path: 'working', component: HowItWorksComponent
+  // },
   {
-    path: 'working', component: HowItWorksComponent
+    path: 'working/:qid', component: HowItWorksComponent
+  },
+  {
+    path: 'user-dashboard', component: UserQuizesComponent
   },
   {
     path: 'admin', component: AdminDashboardComponent, canActivate:[AdminGuard],

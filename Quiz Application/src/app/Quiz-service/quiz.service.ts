@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,16 +8,20 @@ import { BehaviorSubject } from 'rxjs';
 export class QuizService {
 
   public isLoading = new BehaviorSubject<Boolean>(false);
-  public isLogin = new BehaviorSubject<Boolean>(false);
+  public isLogin = new Subject<Boolean>();
   baseUrl = "http://localhost:5000";
 
   constructor(private httpClient: HttpClient) { }
   public isLoggedin() {
     let tokenstr = sessionStorage.getItem('token')
     if (tokenstr == undefined || tokenstr == '' || tokenstr == null) {
+      this.isLogin.next(false)
+      console.log("ifser")
       return false;
     }
     else {
+      console.log("elseser")
+      this.isLogin.next(true)
       return true;
     }
   }
@@ -52,6 +56,9 @@ export class QuizService {
   getAllQuizzes() {
     return this.httpClient.get(`${this.baseUrl}/quiz/categories`)
   }
+  getAllActiveQuizzes() {
+    return this.httpClient.get(`${this.baseUrl}/quiz/active`)
+  }
   addQuizzes(title: any, description: any, maxMarks: any, numofQuest: any, category: any, active: any, quizTime: any) {
     let obj = {
       title: title,
@@ -75,6 +82,9 @@ export class QuizService {
   }
   getQuestionsOfQuiz(qid: any) {
     return this.httpClient.get(`${this.baseUrl}/question/quiz/all/` + qid)
+  }
+  getQuestionsOfQuizuser(qid: any) {
+    return this.httpClient.get(`${this.baseUrl}/question/quiz/` + qid)
   }
   addQuestionsToQuiz(content: any, answer: any, option1:any,option2:any,option3:any,option4:any,qid: any) {
     let obj = {

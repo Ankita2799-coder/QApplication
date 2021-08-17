@@ -8,19 +8,22 @@ import { QuizService } from '../Quiz-service/quiz.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-userLogin:boolean=false
+userLogin!:boolean
   constructor(private qservice:QuizService,private router:Router) { }
 
   ngOnInit(): void {
+    // if(this.qservice.isLoggedin())
+    // {
+    //   this.userLogin=true 
+    // }
+    // else{
+    //   this.userLogin=false;
+    // }
     this.qservice.isLogin.asObservable().subscribe((data:any)=>
-    {
-      if(data == true)
-      {
-        this.userLogin=true
-      }
-      else{
-        this.userLogin=false;
-      }
+    {    
+        console.log("if")
+        console.log(data)
+        this.userLogin=data    
     })
   }
   logOut()

@@ -13,16 +13,19 @@ quizzes:any=[]
   constructor(private qservice:QuizService,private _snackBar: MatSnackBar,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-  this.qservice .getAllQuizzes().subscribe((data:any)=>
-  {
-    this.quizzes=data;
-  },
-  (error)=>
-  {
-    this._snackBar.open("Error in Loading Quiz", "close", {
-      duration: 3000,
+    setTimeout(()=>{
+
+      this.qservice .getAllQuizzes().subscribe((data:any)=>
+      {
+        this.quizzes=data;
+      },
+      (error)=>
+      {
+        this._snackBar.open("Error in Loading Quiz", "close", {
+          duration: 3000,
+        })
+      })
     })
-  })
   }
   deleteQuiz(qId:any)
   {

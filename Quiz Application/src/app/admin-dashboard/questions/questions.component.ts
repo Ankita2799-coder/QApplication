@@ -17,14 +17,17 @@ export class QuestionsComponent implements OnInit {
   ngOnInit(): void {
     this.qid=this.route.snapshot.params.id;
     this.qtitle=this.route.snapshot.params.title;
-    this.qservice.getQuestionsOfQuiz(this.qid).subscribe((response:any)=>
-    {
-      this.questions=response;
-    },
-    (error)=>
-    {
-      this._snackBar.open(" Sucessfull", "close", {
-        duration: 3000,
+    setTimeout(()=>{
+
+      this.qservice.getQuestionsOfQuiz(this.qid).subscribe((response:any)=>
+      {
+        this.questions=response;
+      },
+      (error)=>
+      {
+        this._snackBar.open(" Sucessfull", "close", {
+          duration: 3000,
+        })
       })
     })
   }
