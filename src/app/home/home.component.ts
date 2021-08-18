@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { QuizService } from '../Quiz-service/quiz.service';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  homeText:any
+  constructor(private qservice:QuizService) { }
 
   ngOnInit(): void {
+    setTimeout(()=>
+    {
+      this.qservice.getHomeText().subscribe((response:any)=>
+      {
+        this.homeText=response.homeText;
+      })
+    })
   }
+
 
 }

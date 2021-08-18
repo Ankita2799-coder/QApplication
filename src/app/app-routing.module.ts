@@ -7,6 +7,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { CategoriesComponent } from './admin-dashboard/categories/categories.component';
 import { QuestionsComponent } from './admin-dashboard/questions/questions.component';
 import { QuizComponent } from './admin-dashboard/quiz/quiz.component';
+import { TextAdderComponent } from './admin-dashboard/text-adder/text-adder.component';
 import { UpdateQuizComponent } from './admin-dashboard/update-quiz/update-quiz.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
@@ -68,6 +69,9 @@ const routes: Routes = [
       },
       {
         path: 'add-questions/:id/:title', component: AddNewQuestionsComponent
+      },
+      {
+        path: 'add-text', component: TextAdderComponent
       },
       
 

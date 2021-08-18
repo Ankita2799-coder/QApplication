@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule ,FormsModule} from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+
 import { MatSliderModule } from '@angular/material/slider';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
@@ -42,6 +44,7 @@ import { authInterceptorProviders } from './services/auth.interceptor';
 import { UserQuizesComponent } from './user-quizes/user-quizes.component';
 import Swal from 'sweetalert2'
 import {MatRadioModule} from '@angular/material/radio';
+import { TextAdderComponent } from './admin-dashboard/text-adder/text-adder.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +65,8 @@ import {MatRadioModule} from '@angular/material/radio';
     HowItWorksComponent,
     UpdateQuizComponent,
     QuestionsComponent,
-    UserQuizesComponent,  ],
+    UserQuizesComponent,
+    TextAdderComponent,  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -86,7 +90,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatListModule,
     MatSelectModule,
     MatSlideToggleModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDialogModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

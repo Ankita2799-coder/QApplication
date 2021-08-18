@@ -6,6 +6,10 @@ import { BehaviorSubject, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class QuizService {
+  deleteQuestion(quesId: any) {
+    return this.httpClient.delete(`${this.baseUrl}/question/` + quesId, { responseType: 'text' })
+  }
+
 
   public isLoading = new BehaviorSubject<Boolean>(false);
   public isLogin = new Subject<Boolean>();
@@ -86,14 +90,14 @@ export class QuizService {
   getQuestionsOfQuizuser(qid: any) {
     return this.httpClient.get(`${this.baseUrl}/question/quiz/` + qid)
   }
-  addQuestionsToQuiz(content: any, answer: any, option1:any,option2:any,option3:any,option4:any,qid: any) {
+  addQuestionsToQuiz(content: any, answer: any, option1: any, option2: any, option3: any, option4: any, qid: any) {
     let obj = {
       content: content,
       answer: answer,
-      option1:option1,
-      option2:option2,
-      option3:option3,
-      option4:option4,
+      option1: option1,
+      option2: option2,
+      option3: option3,
+      option4: option4,
       quiz: {
         qId: qid
       }
@@ -103,13 +107,23 @@ export class QuizService {
   getSingleQuiz(qid: any) {
     return this.httpClient.get(`${this.baseUrl}/quiz/` + qid)
   }
+  addTextToHome(homeText: any) {
+    let obj = {
+      home_Id: 1,
+      homeText: homeText
+    }
+    return this.httpClient.put(`${this.baseUrl}/edithomeText`, obj, { responseType: 'json' })
+  }
+  getHomeText() {
+    return this.httpClient.get(`${this.baseUrl}/homeText/` + 1)
+  }
   updateQuiz(quiz: any) {
     return this.httpClient.put(`${this.baseUrl}/quiz/update`, quiz);
   }
   setUser(data: any) {
     sessionStorage.setItem('user', JSON.stringify(data));
   }
-  getCurrentUser(email:any) {
+  getCurrentUser(email: any) {
     return this.httpClient.get(`${this.baseUrl}/current-user`);
   }
   saveToken(jwt: any) {

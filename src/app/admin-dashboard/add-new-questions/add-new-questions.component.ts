@@ -37,6 +37,12 @@ questions:any={
       this._snackBar.open(" Sucessfully added", "close", {
         duration: 3000,
       })
+      this.content.reset();
+      this.option1.reset();
+      this.option2.reset();
+      this.option3.reset();
+      this.option4.reset();
+      this.answer.reset();
     })
   }
 
